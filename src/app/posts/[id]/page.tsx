@@ -1,14 +1,14 @@
-export async function generateMetadata({ params }: { params: { id: string } }) {
+interface PostPageProps {
+  params: Promise<{ id: string }>;
+}
+
+export async function generateMetadata({ params }: PostPageProps) {
   const { id } = await params;
 
   return {
     title: `Post ${id}`,
     description: `Detailed information about post ${id}.`,
   };
-}
-
-interface PostPageProps {
-  params: { id: string };
 }
 
 export default async function PostPage({ params }: PostPageProps) {
